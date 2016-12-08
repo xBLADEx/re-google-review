@@ -55,7 +55,7 @@ add_action( 'admin_menu', 're_google_review_options_page' );
  */
 function re_google_review_form_settings() {
 	// Section Name, Title, Function, Page.
-	add_settings_section( 're_google_review_attr_id', 'Google Review Section', 're_google_review_callback_optional', 'google-review' );
+	add_settings_section( 're_google_review_attr_id', 'General Settings', 're_google_review_callback_optional', 'google-review' );
 	// Attribute, Title, Function, Section Name 1st @param add_settings_section.
 	add_settings_field( 're_google_review_place_id', 'Google Place ID', 're_google_review_callback_field', 'google-review', 're_google_review_attr_id' );
 	// Section Name, Form Element Name, Sanitize Function.
@@ -68,8 +68,7 @@ add_action( 'admin_init', 're_google_review_form_settings' );
  * Optional Settings Section Callback
  */
 function re_google_review_callback_optional() {
-	// Nothing.
-	echo 'Optional Title';
+	// Optional area.
 }
 
 /**
@@ -80,3 +79,15 @@ function re_google_review_callback_field() {
 	<input type="text" name="re_google_review_place_id" id="re_google_review_place_id" value="<?php echo esc_attr( get_option( 're_google_review_place_id' ) ); ?>">
 	<?php
 }
+
+/**
+ * Create Shortcode [google_review].
+ *
+ * @return string HTML link for Google review.
+ */
+function re_google_review_shortcode() {
+	$place_id = get_option( 're_google_review_place_id' );
+	return '<a href="http://search.google.com/local/writereview?placeid=' . esc_url( $place_id ) . '" class="write-a-review">' . esc_html( 'Write a review', 'googlereview' ) . '</a>';
+}
+
+add_shortcode( 'google_review', 're_google_review_shortcode' );
