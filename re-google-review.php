@@ -68,7 +68,15 @@ add_action( 'admin_init', 're_google_review_form_settings' );
  * Optional Settings Section Callback
  */
 function re_google_review_callback_optional() {
-	// Optional area.
+	?>
+	<h4>Instructions</h4>
+	<ol>
+		<li>Find your Place ID by searching for your company here: <a href="https://developers.google.com/places/place-id" target="_blank">https://developers.google.com/places/place-id</a></li>
+		<li>Copy the Place ID. Example: <code>ChIJ-UfrxMVEyoARTDzoXZg72ig</code></li>
+		<li>Enter Place ID below and save</li>
+		<li>Use the shortcode in your Page or Post: <code>[google_review]</code></li>
+	</ol>
+	<?php
 }
 
 /**
