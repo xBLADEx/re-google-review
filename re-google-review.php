@@ -87,7 +87,7 @@ function re_google_review_callback_field() {
  */
 function re_google_review_shortcode() {
 	$place_id = get_option( 're_google_review_place_id' );
-	return '<a href="http://search.google.com/local/writereview?placeid=' . esc_url( $place_id ) . '" class="write-a-review">' . esc_html( 'Write a review', 'googlereview' ) . '</a>';
+	return '<a href="http://search.google.com/local/writereview?placeid=' . esc_attr( $place_id ) . '" class="write-a-review" data-place-id="' . esc_attr( $place_id ) . '">' . esc_html( 'Write a review', 'googlereview' ) . '</a>';
 }
 
 add_shortcode( 'google_review', 're_google_review_shortcode' );
