@@ -71,7 +71,7 @@ function re_google_review_callback_optional() {
 	?>
 	<h4>Instructions</h4>
 	<ol>
-		<li>Find your Place ID by searching for your company here: <a href="https://developers.google.com/places/place-id" target="_blank">https://developers.google.com/places/place-id</a></li>
+		<li>Find your Place ID by searching for your company name or address here: <a href="https://developers.google.com/places/place-id" target="_blank">https://developers.google.com/places/place-id</a></li>
 		<li>Copy the Place ID. Example: <code>ChIJ-UfrxMVEyoARTDzoXZg72ig</code></li>
 		<li>Enter Place ID below and save</li>
 		<li>Use the shortcode in your Page or Post: <code>[google_review]</code></li>
