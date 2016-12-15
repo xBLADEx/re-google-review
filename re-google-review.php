@@ -105,3 +105,96 @@ function re_google_review_shortcode() {
 }
 
 add_shortcode( 'google_review', 're_google_review_shortcode' );
+
+/**
+ * Register Google Review Post Type
+ *
+ * See: https://code.tutsplus.com/articles/plugin-templating-within-wordpress--wp-31088.
+ */
+function re_google_review_setup_post_type() {
+
+	// Custom Post Type Labels.
+	$labels = array(
+		'name'               => esc_html__( 'Google Review', 'googlereview' ),
+		'singular_name'      => esc_html__( 'Google Review', 'googlereview' ),
+		'add_new'            => esc_html__( 'Add New', 'googlereview' ),
+		'add_new_item'       => esc_html__( 'Add New Google Review', 'googlereview' ),
+		'edit_item'          => esc_html__( 'Edit Google Review', 'googlereview' ),
+		'new_item'           => esc_html__( 'New Google Review', 'googlereview' ),
+		'view_item'          => esc_html__( 'View Google Review', 'googlereview' ),
+		'search_items'       => esc_html__( 'Search Google Review', 'googlereview' ),
+		'not_found'          => esc_html__( 'No Google Review found', 'googlereview' ),
+		'not_found_in_trash' => esc_html__( 'No Google Review found in trash', 'googlereview' ),
+		'parent_item_colon'  => '',
+	);
+
+	// Supports.
+	$supports = array( 'title', 'editor' );
+
+	// Custom Post Type Supports.
+	$args = array(
+		'labels'             => $labels,
+		'public'             => true,
+		'publicly_queryable' => true,
+		'show_ui'            => true,
+		'query_var'          => true,
+		'can_export'         => true,
+		'rewrite'            => array( 'slug' => 're-google-reviews', 'with_front' => true ),
+		'capability_type'    => 'post',
+		'hierarchical'       => false,
+		'menu_position'      => 25,
+		'supports'           => $supports,
+	);
+
+	// Register the re-reviews custom post type.
+	register_post_type( 're-google-reviews' , $args );
+}
+
+add_action( 'init', 're_google_review_setup_post_type' );
+
+/**
+ * Get Template
+ *
+ * @param  string $template File name.
+ * @return string           File.
+ */
+function re_google_review_get_template_hierarchy( $template ) {
+
+	// Get the template slug.
+	$template_slug = rtrim( $template, '.php' );
+	$template = $template_slug . '.php';
+
+	// Check if a custom template exists in the theme folder, if not, load the plugin template file.
+	if ( $theme_file = locate_template( array( 'plugin_template/' . $template ) ) ) {
+		$file = $theme_file;
+	} else {
+		$file = RE_BASE_DIR . '/assets/template/' . $template;
+	}
+
+	return apply_filters( 're_google_review_template_' . $template, $file );
+}
+
+/**
+ * Select Template
+ *
+ * @param  sting $template Template name.
+ * @return sting           Template.
+ */
+function re_google_review_template_select( $template ) {
+
+	// Post ID.
+	$post_id = get_the_ID();
+
+	// For all other CPT.
+	if ( get_post_type( $post_id ) !== 're-google-reviews' ) {
+		return $template;
+	}
+
+	// Else use custom template.
+	if ( is_single() ) {
+		return re_google_review_get_template_hierarchy( 'single' );
+	}
+
+}
+
+add_filter( 'template_include', 're_google_review_template_select' );
