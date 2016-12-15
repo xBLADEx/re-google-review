@@ -10,14 +10,20 @@
  * @package RE Google Review
  */
 
+// Base file.
+define( 'RE_BASE_FILE', __FILE__ );
+define( 'RE_BASE_DIR', dirname( RE_BASE_FILE ) );
+
 // http://codex.wordpress.org/Function_Reference/plugin_dir_url.
 // This plugin_dir_url includes the trailing slash.
-define( 'PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+define( 'RE_PLUGIN_URL', plugin_dir_url( RE_BASE_FILE ) );
+
+
 
 // Enqueue Scripts.
 if ( ! is_admin() ) {
-	wp_enqueue_style( 're-google-review', PLUGIN_URL . 'assets/css/review.css', '', '1.0' );
-	wp_enqueue_script( 're-google-review', PLUGIN_URL . 'assets/js/review.js', array( 'jquery' ), '1.0', true );
+	wp_enqueue_style( 're-google-review', RE_PLUGIN_URL . 'assets/css/review.css', '', '1.0' );
+	wp_enqueue_script( 're-google-review', RE_PLUGIN_URL . 'assets/js/review.js', array( 'jquery' ), '1.0', true );
 }
 
 /**
