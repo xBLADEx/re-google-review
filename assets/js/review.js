@@ -4,8 +4,9 @@
 
 	$( function() {
 
-		var body        = $( 'body' ),
-			writeReview = $( '.write-a-review' );
+		var body         = $( 'body' ),
+			writeReview  = $( '.write-a-review' ),
+			singleReview = $( '.single-re-google-reviews' );
 
 		// If review link exists.
 		if ( writeReview.length ) {
@@ -39,6 +40,11 @@
 
 			} );
 
+		}
+
+		// If single custom post type.
+		if ( singleReview.length ) {
+			$( '.open-review' ).prependTo( body );
 		}
 
 	} );
