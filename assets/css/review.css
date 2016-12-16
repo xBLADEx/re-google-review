@@ -13,11 +13,15 @@
 
 .open-review h2 {
 	color: #FFF;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 26px;
+	font-weight: normal;
 	margin-bottom: 60px;
 	text-align: center;
 }
 
 .open-review h2 span {
+	font-family: inherit;
 	font-weight: bold;
 }
 
@@ -29,6 +33,7 @@
 	box-shadow: 0 10px 24px rgba(0, 0, 0, 0.1);
 	color: #333;
 	display: inline-block;
+	font-family: 'Open Sans', sans-serif;
 	font-size: 17px;
 	font-weight: bold;
 	padding: 14px 0;
