@@ -217,7 +217,7 @@ add_filter( 'template_include', 're_google_review_template_select' );
 
 // Meta box variables.
 // See http://www.deluxeblogtips.com/how-to-create-meta-box-wordpress-post/.
-$prefix = 're_google_review_';
+$prefix = 're-google-review-';
 
 $meta_box = array(
 	'id'       => 're-google-review-meta-box',
