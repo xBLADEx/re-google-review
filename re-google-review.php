@@ -227,38 +227,18 @@ $meta_box = array(
 	'priority' => 'high',
 	'fields'   => array(
 		array(
-			'name' => 'Text box',
-			'desc' => 'Enter something here',
-			'id' => $prefix . 'text',
+			'name' => 'Google Place ID',
+			'desc' => 'Enter Google Place ID.',
+			'id'   => $prefix . 'google-place-id',
 			'type' => 'text',
-			'std' => 'Default value 1',
+			'std'  => '',
 		),
 		array(
-			'name' => 'Textarea',
-			'desc' => 'Enter big text here',
-			'id' => $prefix . 'textarea',
-			'type' => 'textarea',
-			'std' => 'Default value 2',
-		),
-		array(
-			'name' => 'Select box',
-			'id' => $prefix . 'select',
-			'type' => 'select',
-			'options' => array( 'Option 1', 'Option 2', 'Option 3' ),
-		),
-		array(
-			'name' => 'Radio',
-			'id' => $prefix . 'radio',
-			'type' => 'radio',
-			'options' => array(
-				array( 'name' => 'Name 1', 'value' => 'Value 1' ),
-				array( 'name' => 'Name 2', 'value' => 'Value 2' ),
-			),
-		),
-		array(
-			'name' => 'Checkbox',
-			'id' => $prefix . 'checkbox',
-			'type' => 'checkbox',
+			'name' => 'Facebook',
+			'desc' => 'Enter URL to Facebook review page.',
+			'id'   => $prefix . 'facebook',
+			'type' => 'text',
+			'std'  => '',
 		),
 	),
 );
@@ -282,7 +262,7 @@ function re_google_review_meta_box_fields() {
 	global $meta_box, $post;
 
 	// Use nonce for verification.
-	echo '<input type="hidden" name="re_google_review_meta_box_nonce" value="', wp_create_nonce( basename( RE_BASE_FILE ) ), '" />';
+	echo '<input type="hidden" name="re_google_review_meta_box_nonce" value="', wp_create_nonce( basename( RE_BASE_FILE ) ), '">';
 
 	echo '<table class="form-table">';
 
@@ -290,31 +270,31 @@ function re_google_review_meta_box_fields() {
 		// Get current post meta data.
 		$meta = get_post_meta( $post->ID, $field['id'], true );
 
-		echo '<tr>',
-		'<th style="width:20%"><label for="', $field['id'], '">', $field['name'], '</label></th>',
-		'<td>';
+		echo '<tr>';
+		echo '<th style="width:20%"><label for="', $field['id'], '">', $field['name'], '</label></th>';
+		echo '<td>';
 		switch ( $field['type'] ) {
 			case 'text':
-			echo '<input type="text" name="', $field['id'], '" id="', $field['id'], '" value="', $meta ? $meta : $field['std'], '" size="30" style="width:97%" />', '<br />', $field['desc'];
-			break;
+				echo '<input type="text" name="', $field['id'], '" id="', $field['id'], '" value="', $meta ? $meta : $field['std'], '" size="50">', '<br>', $field['desc'];
+				break;
 			case 'textarea':
-			echo '<textarea name="', $field['id'], '" id="', $field['id'], '" cols="60" rows="4" style="width:97%">', $meta ? $meta : $field['std'], '</textarea>', '<br />', $field['desc'];
-			break;
+				echo '<textarea name="', $field['id'], '" id="', $field['id'], '" cols="60" rows="4" style="width:97%">', $meta ? $meta : $field['std'], '</textarea>', '<br />', $field['desc'];
+				break;
 			case 'select':
-			echo '<select name="', $field['id'], '" id="', $field['id'], '">';
-			foreach ( $field['options'] as $option ) {
-				echo '<option ', $meta == $option ? ' selected="selected"' : '', '>', $option, '</option>';
-			}
-			echo '</select>';
-			break;
+				echo '<select name="', $field['id'], '" id="', $field['id'], '">';
+				foreach ( $field['options'] as $option ) {
+					echo '<option ', $meta == $option ? ' selected="selected"' : '', '>', $option, '</option>';
+				}
+				echo '</select>';
+				break;
 			case 'radio':
-			foreach ( $field['options'] as $option ) {
-				echo '<input type="radio" name="', $field['id'], '" value="', $option['value'], '"', $meta == $option['value'] ? ' checked="checked"' : '', ' />', $option['name'];
-			}
-			break;
+				foreach ( $field['options'] as $option ) {
+					echo '<input type="radio" name="', $field['id'], '" value="', $option['value'], '"', $meta == $option['value'] ? ' checked="checked"' : '', ' />', $option['name'];
+				}
+				break;
 			case 'checkbox':
-			echo '<input type="checkbox" name="', $field['id'], '" id="', $field['id'], '"', $meta ? ' checked="checked"' : '', ' />';
-			break;
+				echo '<input type="checkbox" name="', $field['id'], '" id="', $field['id'], '"', $meta ? ' checked="checked"' : '', ' />';
+				break;
 		}
 		echo '</td><td>',
 		'</td></tr>';
