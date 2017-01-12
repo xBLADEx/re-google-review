@@ -41,6 +41,10 @@
 	width: 280px;
 }
 
+.open-review .button:hover {
+	color: #333;
+}
+
 .open-review p,
 .open-review .button {
 	margin-bottom: 20px;
