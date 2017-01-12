@@ -151,24 +151,6 @@ function re_google_review_setup_post_type() {
 add_action( 'init', 're_google_review_setup_post_type' );
 
 /**
- * Change CPT title placeholder text.
- *
- * @param  string $title Name.
- * @return string        Text for placeholder.
- */
-function re_google_review_change_title_placeholder_text( $title ) {
-	$screen = get_current_screen();
-
-	if ( 're-google-reviews' === $screen->post_type ) {
-		$title = 'Enter Google Place ID';
-	}
-
-	return $title;
-}
-
-add_filter( 'enter_title_here', 're_google_review_change_title_placeholder_text' );
-
-/**
  * Get Template
  *
  * @param  string $template File name.
