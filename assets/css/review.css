@@ -8,7 +8,7 @@
 	justify-content: center;
 	position: fixed;
 	width: 100%;
-	z-index: 99;
+	z-index: 9999;
 }
 
 .open-review h2 {
