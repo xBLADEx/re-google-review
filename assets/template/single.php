@@ -7,12 +7,13 @@
 
 get_header();
 
-$google_review   = get_post_meta( $post->ID, 're-google-review-google-place-id', true );
-$facebook_review = get_post_meta( $post->ID, 're-google-review-facebook', true );
+$google_review          = get_post_meta( $post->ID, 're-google-review-google-place-id', true );
+$facebook_review        = get_post_meta( $post->ID, 're-google-review-facebook', true );
+$healthy_hearing_review = get_post_meta( $post->ID, 're-google-review-healthy-hearing', true );
 ?>
 
 <div class="open-review">
-	<h2>Use <span>Google</span><br>to leave your review?</h2>
+	<h2 id="review-heading">Use <span>Google</span><br>to leave your review?</h2>
 
 	<a href="http://search.google.com/local/writereview?placeid=<?php echo esc_html( $google_review ); ?>" class="button"><?php esc_html_e( 'Yes', 'domain' ); ?></a>
 
