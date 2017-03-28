@@ -20,8 +20,9 @@ $review_options         = [
 
 <div class="open-review">
 	<?php
-	$count   = 0;
-	$reviews = count( $review_options ) - count( empty( $review_options ) );
+	$count         = 0;
+	$reviews       = array_filter( $review_options );
+	$total_reviews = count( $reviews );
 
 	foreach ( $review_options as $key => $review ) :
 		// If our review is empty, skip and continue on.
@@ -42,7 +43,7 @@ $review_options         = [
 
 			<a href="<?php echo esc_url( $link ); ?>" class="button"><?php esc_html_e( 'Yes', 'domain' ); ?></a>
 
-			<?php if ( $count < $reviews - 1 ) : // Do not show on last review. ?>
+			<?php if ( $count < $total_reviews - 1 ) : // Do not show on last review. ?>
 				<p class="or"><?php esc_html_e( '- OR -', 'domain' ); ?></p>
 
 				<button class="button next-review"><?php esc_html_e( 'Other Review Options', 'domain' ); ?></button>
