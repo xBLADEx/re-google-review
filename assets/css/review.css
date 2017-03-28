@@ -23,6 +23,7 @@
 .open-review h2 span {
 	font-family: inherit;
 	font-weight: bold;
+	text-transform: capitalize;
 }
 
 .open-review .button {
@@ -57,7 +58,20 @@
 	font-weight: normal;
 }
 
+.open-review .or {
+	text-align: center;
+}
+
 .open-review .close {
 	color: #FFF;
 	margin-top: 50px;
+}
+
+/* Single Page Review */
+.open-review .review-container {
+	display: none;
+}
+
+.open-review .review-container:first-child {
+	display: block;
 }

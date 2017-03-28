@@ -28,16 +28,16 @@ $review_options         = [
 		?>
 		<div class="review-container">
 			<h2 id="review-heading">Use <span><?php echo esc_html( $key ); ?></span><br>to leave your review?</h2>
+
+			<a href="http://search.google.com/local/writereview?placeid=<?php echo esc_html( $google_review ); ?>" class="button"><?php esc_html_e( 'Yes', 'domain' ); ?></a>
+
+			<p class="or"><?php esc_html_e( '- OR -', 'domain' ); ?></p>
+
+			<button class="button"><?php esc_html_e( 'Other Review Options', 'domain' ); ?></button>
 		</div>
 		<?php
 	endforeach;
 	?>
-
-	<a href="http://search.google.com/local/writereview?placeid=<?php echo esc_html( $google_review ); ?>" class="button"><?php esc_html_e( 'Yes', 'domain' ); ?></a>
-
-	<p><?php esc_html_e( '- OR -', 'domain' ); ?></p>
-
-	<button class="button"><?php esc_html_e( 'Other Review Options', 'domain' ); ?></button>
 </div>
 
 <?php get_footer(); ?>
