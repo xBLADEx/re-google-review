@@ -12,9 +12,9 @@ $facebook_review        = get_post_meta( $post->ID, 're-google-review-facebook',
 $healthy_hearing_review = get_post_meta( $post->ID, 're-google-review-healthy-hearing', true );
 
 $review_options         = [
-	'google'   => $google_review,
-	'facebook' => $facebook_review,
-	'healthy hearing'  => $healthy_hearing_review,
+	'google'          => $google_review,
+	'facebook'        => $facebook_review,
+	'healthy hearing' => $healthy_hearing_review,
 ];
 ?>
 
@@ -28,11 +28,19 @@ $review_options         = [
 		if ( empty( $review ) ) {
 			continue;
 		}
+
+		// Set our link.
+		$link = $review;
+
+		// If Google create full URL.
+		if ( 'google' === $key ) {
+			$link = 'http://search.google.com/local/writereview?placeid=' . esc_html( $link );
+		}
 		?>
 		<div class="review-container">
 			<h2 id="review-heading"><?php esc_html_e( 'Use', 'domain' ); ?> <span><?php echo esc_html( $key ); ?></span><br><?php esc_html_e( 'to leave your review?', 'domain' ); ?></h2>
 
-			<a href="http://search.google.com/local/writereview?placeid=<?php echo esc_html( $google_review ); ?>" class="button"><?php esc_html_e( 'Yes', 'domain' ); ?></a>
+			<a href="<?php echo esc_url( $link ); ?>" class="button"><?php esc_html_e( 'Yes', 'domain' ); ?></a>
 
 			<?php if ( $count < $reviews - 1 ) : // Do not show on last review. ?>
 				<p class="or"><?php esc_html_e( '- OR -', 'domain' ); ?></p>
