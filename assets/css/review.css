@@ -72,6 +72,6 @@
 	display: none;
 }
 
-.open-review .review-container:first-child {
+.open-review .review-container:first-of-type {
 	display: block;
 }

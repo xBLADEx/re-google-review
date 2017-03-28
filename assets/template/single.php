@@ -20,6 +20,9 @@ $review_options         = [
 
 <div class="open-review">
 	<?php
+	$count   = 0;
+	$reviews = count( $review_options );
+
 	foreach ( $review_options as $key => $review ) :
 		// If our review is empty, skip and continue on.
 		if ( empty( $review ) ) {
@@ -31,11 +34,14 @@ $review_options         = [
 
 			<a href="http://search.google.com/local/writereview?placeid=<?php echo esc_html( $google_review ); ?>" class="button"><?php esc_html_e( 'Yes', 'domain' ); ?></a>
 
-			<p class="or"><?php esc_html_e( '- OR -', 'domain' ); ?></p>
+			<?php if ( $count < $reviews - 1 ) : // Do not show on last review. ?>
+				<p class="or"><?php esc_html_e( '- OR -', 'domain' ); ?></p>
 
-			<button class="button"><?php esc_html_e( 'Other Review Options', 'domain' ); ?></button>
+				<button id="next-review" class="button"><?php esc_html_e( 'Other Review Options', 'domain' ); ?></button>
+			<?php endif; ?>
 		</div>
 		<?php
+		$count++;
 	endforeach;
 	?>
 </div>
