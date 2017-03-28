@@ -38,14 +38,14 @@ $review_options         = [
 		}
 		?>
 		<div class="review-container">
-			<h2 id="review-heading"><?php esc_html_e( 'Use', 'domain' ); ?> <span><?php echo esc_html( $key ); ?></span><br><?php esc_html_e( 'to leave your review?', 'domain' ); ?></h2>
+			<h2><?php esc_html_e( 'Use', 'domain' ); ?> <span><?php echo esc_html( $key ); ?></span><br><?php esc_html_e( 'to leave your review?', 'domain' ); ?></h2>
 
 			<a href="<?php echo esc_url( $link ); ?>" class="button"><?php esc_html_e( 'Yes', 'domain' ); ?></a>
 
 			<?php if ( $count < $reviews - 1 ) : // Do not show on last review. ?>
 				<p class="or"><?php esc_html_e( '- OR -', 'domain' ); ?></p>
 
-				<button id="next-review" class="button"><?php esc_html_e( 'Other Review Options', 'domain' ); ?></button>
+				<button class="button next-review"><?php esc_html_e( 'Other Review Options', 'domain' ); ?></button>
 			<?php endif; ?>
 		</div>
 		<?php

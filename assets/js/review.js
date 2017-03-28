@@ -44,7 +44,16 @@
 
 		// If single custom post type.
 		if ( singleReview.length ) {
+			var reviewContainer = $( '.review-container' ),
+				nextReview      = $( '.next-review' );
+
 			$( '.open-review' ).prependTo( body );
+
+			nextReview.on( 'click', function( e ) {
+				e.preventDefault();
+
+				$(this).parent( reviewContainer ).hide().next().show();
+			} );
 		}
 
 	} );
