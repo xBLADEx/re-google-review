@@ -222,6 +222,13 @@ $meta_box = array(
 			'type' => 'text',
 			'std'  => '',
 		),
+		array(
+			'name' => __( 'Healthy Hearing', 'domain' ),
+			'desc' => __( 'Enter URL to Healthy Hearing review page.', 'domain' ),
+			'id'   => $prefix . 'healthy-hearing',
+			'type' => 'text',
+			'std'  => '',
+		),
 	),
 );
 
