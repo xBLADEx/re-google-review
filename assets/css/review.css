@@ -39,10 +39,12 @@
 	font-weight: bold;
 	padding: 14px 0;
 	text-align: center;
+	text-decoration: none;
 	width: 280px;
 }
 
 .open-review .button:hover {
+	background: #FFF;
 	color: #333;
 }
 
