@@ -203,21 +203,21 @@ $prefix = 're-google-review-';
 
 $meta_box = array(
 	'id'       => 're-google-review-meta-box',
-	'title'    => 'Company Review Links',
+	'title'    => __( 'Company Review Links', 'domain' ),
 	'page'     => 're-google-reviews',
 	'context'  => 'normal',
 	'priority' => 'high',
 	'fields'   => array(
 		array(
-			'name' => 'Google Place ID',
-			'desc' => 'Enter Google Place ID.',
+			'name' => __( 'Google Place ID', 'domain' ),
+			'desc' => __( 'Enter Google Place ID.', 'domain' ),
 			'id'   => $prefix . 'google-place-id',
 			'type' => 'text',
 			'std'  => '',
 		),
 		array(
-			'name' => 'Facebook',
-			'desc' => 'Enter URL to Facebook review page.',
+			'name' => __( 'Facebook', 'domain' ),
+			'desc' => __( 'Enter URL to Facebook review page.', 'domain' ),
 			'id'   => $prefix . 'facebook',
 			'type' => 'text',
 			'std'  => '',
