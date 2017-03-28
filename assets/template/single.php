@@ -21,7 +21,7 @@ $review_options         = [
 <div class="open-review">
 	<?php
 	$count   = 0;
-	$reviews = count( $review_options );
+	$reviews = count( $review_options ) - count( empty( $review_options ) );
 
 	foreach ( $review_options as $key => $review ) :
 		// If our review is empty, skip and continue on.
