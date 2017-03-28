@@ -14,7 +14,7 @@ $healthy_hearing_review = get_post_meta( $post->ID, 're-google-review-healthy-he
 $review_options         = [
 	'google'   => $google_review,
 	'facebook' => $facebook_review,
-	'healthy'  => $healthy_hearing_review,
+	'healthy hearing'  => $healthy_hearing_review,
 ];
 ?>
 
@@ -27,7 +27,7 @@ $review_options         = [
 		}
 		?>
 		<div class="review-container">
-			<h2 id="review-heading">Use <span><?php echo esc_html( $key ); ?></span><br>to leave your review?</h2>
+			<h2 id="review-heading"><?php esc_html_e( 'Use', 'domain' ); ?> <span><?php echo esc_html( $key ); ?></span><br><?php esc_html_e( 'to leave your review?', 'domain' ); ?></h2>
 
 			<a href="http://search.google.com/local/writereview?placeid=<?php echo esc_html( $google_review ); ?>" class="button"><?php esc_html_e( 'Yes', 'domain' ); ?></a>
 
